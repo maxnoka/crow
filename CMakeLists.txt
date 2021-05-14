@@ -22,3 +22,9 @@ IF (Boost_FOUND)
 ELSE()
     message(STATUS "Boost not found")
 endif()
+
+set(CMAKE_THREAD_PREFER_PTHREAD ON)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+
+target_link_libraries(crow_library INTERFACE Threads::Threads)
